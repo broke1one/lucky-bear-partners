@@ -17,8 +17,10 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ${{ secrets.FTP_HOST }}
+        port: 21
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASS }}
+        protocol: ftp
         local-dir: ./
         server-dir: /www/luckybearpartners.com/
         dangerous-clean-slate: false
