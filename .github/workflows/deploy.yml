@@ -21,6 +21,7 @@ jobs:
         password: ${{ secrets.FTP_PASS }}
         local-dir: ./
         server-dir: /www/luckybearpartners.com/
+        dangerous-clean-slate: false
         exclude: |
           **/.git*
           **/.git*/**
@@ -28,3 +29,4 @@ jobs:
           **/*.md
           **/deploy.sh
           **/.DS_Store
+          **/.github/**
