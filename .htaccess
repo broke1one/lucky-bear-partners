@@ -1,0 +1,10 @@
+# Apache конфигурация для редиректа /admin на /admin/
+RewriteEngine On
+
+# Редирект /admin на /admin/
+RewriteRule ^admin$ admin/ [R=301,L]
+
+# Если файл или директория не существует, попробовать добавить .html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^admin/$ admin/index.html [L]

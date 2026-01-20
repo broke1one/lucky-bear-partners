@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Lucky Bear Partners</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="navbar">
+                <a href="index.html" class="nav-logo">LUCKY BEAR</a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="blog.html" class="nav-link">Блог</a>
+                </div>
+            </nav>
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Админ-панель</h1>
+                </div>
+                <p class="tagline">Управление статьями</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="admin-container">
+                <!-- Список статей -->
+                <section class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Список статей</h2>
+                        <button class="btn btn-primary" id="addArticleBtn">+ Добавить статью</button>
+                    </div>
+                    <div class="articles-list" id="articlesList">
+                        <!-- Список статей будет здесь -->
+                    </div>
+                </section>
+
+                <!-- Форма добавления/редактирования статьи -->
+                <section class="admin-section" id="articleFormSection" style="display: none;">
+                    <div class="section-header">
+                        <h2 class="section-title" id="formTitle">Добавить новую статью</h2>
+                        <button class="btn btn-secondary" id="closeFormBtn">✕ Закрыть</button>
+                    </div>
+
+                    <form class="article-form" id="articleForm">
+                        <input type="hidden" id="articleId" value="">
+
+                        <!-- Основная информация -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Основная информация</h3>
+                            
+                            <div class="form-group">
+                                <label for="articleTitle">Название статьи *</label>
+                                <input type="text" id="articleTitle" class="form-input" required placeholder="Введите название статьи">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleImage">Картинка (URL или загрузить файл)</label>
+                                <div class="image-upload-container">
+                                    <input type="url" id="articleImageUrl" class="form-input" placeholder="https://example.com/image.jpg">
+                                    <span class="input-divider">или</span>
+                                    <input type="file" id="articleImageFile" class="form-file" accept="image/*">
+                                    <div class="image-preview" id="imagePreview" style="display: none;">
+                                        <img id="previewImg" src="" alt="Preview">
+                                        <button type="button" class="remove-image" id="removeImageBtn">✕</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleText">Текст статьи *</label>
+                                <textarea id="articleText" class="form-textarea" rows="10" required placeholder="Введите полный текст статьи"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleExcerpt">Краткое описание (для превью)</label>
+                                <textarea id="articleExcerpt" class="form-textarea" rows="3" placeholder="Краткое описание статьи, которое будет отображаться в списке"></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="articleDate">Дата публикации *</label>
+                                    <input type="date" id="articleDate" class="form-input" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="articleCategory">Категория *</label>
+                                    <input type="text" id="articleCategory" class="form-input" required placeholder="Новости, Обзоры, и т.д.">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleLink">Ссылка на полную статью (если статья на внешнем ресурсе)</label>
+                                <input type="url" id="articleLink" class="form-input" placeholder="https://example.com/article">
+                            </div>
+                        </div>
+
+                        <!-- SEO настройки -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">SEO настройки</h3>
+
+                            <div class="form-group">
+                                <label for="metaTitle">Meta Title *</label>
+                                <input type="text" id="metaTitle" class="form-input" required placeholder="Заголовок для поисковых систем (50-60 символов)">
+                                <span class="char-count" id="metaTitleCount">0 / 60</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="metaDescription">Meta Description *</label>
+                                <textarea id="metaDescription" class="form-textarea" rows="3" required placeholder="Описание для поисковых систем (150-160 символов)"></textarea>
+                                <span class="char-count" id="metaDescriptionCount">0 / 160</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="metaKeywords">Meta Keywords (ключевые слова через запятую)</label>
+                                <input type="text" id="metaKeywords" class="form-input" placeholder="казино, партнерская программа, заработок">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="focusKeyword">Focus Keyword (главное ключевое слово статьи) *</label>
+                                <input type="text" id="focusKeyword" class="form-input" required placeholder="Основное ключевое слово">
+                            </div>
+                        </div>
+
+                        <!-- Open Graph (Social Media) -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Open Graph (Social Media)</h3>
+
+                            <div class="form-group">
+                                <label for="ogTitle">OG Title (для соцсетей)</label>
+                                <input type="text" id="ogTitle" class="form-input" placeholder="Заголовок для соцсетей (если не указан, используется Meta Title)">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ogDescription">OG Description (для соцсетей)</label>
+                                <textarea id="ogDescription" class="form-textarea" rows="3" placeholder="Описание для соцсетей (если не указано, используется Meta Description)"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ogImage">OG Image (изображение для соцсетей)</label>
+                                <input type="url" id="ogImage" class="form-input" placeholder="https://example.com/og-image.jpg">
+                                <small class="form-hint">Если не указано, используется основное изображение статьи</small>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Сохранить статью</button>
+                            <button type="button" class="btn btn-secondary" id="cancelBtn">Отмена</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 LUCKYBEAR DAO. ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог - Lucky Bear Partners</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="navbar">
+                <a href="index.html" class="nav-logo">LUCKY BEAR</a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="blog.html" class="nav-link active">Блог</a>
+                </div>
+            </nav>
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Блог</h1>
+                </div>
+                <p class="tagline">Полезные статьи и новости</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="blog-section">
+                <div class="blog-container">
+                    <!-- Статьи будут добавляться здесь -->
+                    <div class="articles-grid" id="articlesGrid">
+                        <!-- Пример статьи (можно удалить после добавления реальных статей) -->
+                        <article class="article-card">
+                            <div class="article-image">
+                                <div class="article-placeholder">📝</div>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="article-date">01.01.2025</span>
+                                    <span class="article-category">Новости</span>
+                                </div>
+                                <h2 class="article-title">Пример статьи</h2>
+                                <p class="article-excerpt">Это пример статьи. Вы можете добавить свои статьи, отредактировав файл blog.html или добавив их через JavaScript.</p>
+                                <a href="#" class="article-link">Читать далее →</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Форма для добавления новой статьи (опционально, можно скрыть) -->
+                    <div class="add-article-section" id="addArticleSection" style="display: none;">
+                        <h2 class="section-title">Добавить новую статью</h2>
+                        <form class="article-form" id="articleForm">
+                            <div class="form-group">
+                                <label for="articleTitle">Заголовок статьи</label>
+                                <input type="text" id="articleTitle" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="articleExcerpt">Краткое описание</label>
+                                <textarea id="articleExcerpt" class="form-textarea" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="articleDate">Дата</label>
+                                <input type="date" id="articleDate" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="articleCategory">Категория</label>
+                                <input type="text" id="articleCategory" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="articleLink">Ссылка на полную статью</label>
+                                <input type="url" id="articleLink" class="form-input" required>
+                            </div>
+                            <button type="submit" class="submit-button">Добавить статью</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 LUCKYBEAR DAO. ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+
+    <script src="blog.js"></script>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106356736', 'ym');
+
+        ym(106356736, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106356736" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>
+</html>
